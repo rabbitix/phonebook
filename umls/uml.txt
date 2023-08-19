@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+actor "user" as cu
+rectangle PhoneBook {
+usecase "add new contact" as UC1
+usecase "show all contacts" as UC2
+usecase "contact detail" as UC3
+usecase "edit contact" as UC4
+usecase "delete contact" as UC5
+usecase "search contact" as UC6
+
+}
+cu --> UC1
+cu --> UC2
+cu --> UC3
+cu --> UC4
+cu --> UC5
+cu --> UC6
+@enduml
