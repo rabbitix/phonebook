@@ -1,14 +1,21 @@
 # phonebook
 simple phonebook api with FastAPI 
+____
+this project assumes that user can create a contact and each contact can have several numbers
+as you can see in picture: 
+
+![dataclass uml](./umls/data_models.png)
 
 
-## usage:
+
+## plantUML usage:
 
 first install openJDK : `sudo apt install openjdk-11-jdk`
 
 then
 
 to use plantUML, use `java -jar plantuml.jar uml.txt`
+
 
 ## docs:
 - [sqlAlchemy](https://fastapi.tiangolo.com/tutorial/sql-databases/#create-the-sqlalchemy-parts)

@@ -4,4 +4,5 @@ actor User
 User -> API:Get list of contacts
 API ->BACKEND:GET /contacts
 BACKEND-->API:Return the Response
+
 @enduml

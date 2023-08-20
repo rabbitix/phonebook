@@ -5,8 +5,6 @@ class Contact {
  +last_name
  +nick_name
  -created
- +get_default_number()
- +numbers()
 }
 
 class Number {
