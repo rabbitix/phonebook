@@ -1,5 +1,5 @@
 import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class NumberCreate(BaseModel):
@@ -25,8 +25,8 @@ class Number(NumberCreate):
 class BaseContact(BaseModel):
     first_name: str
     last_name: str
-    nick_name: str
-    created: datetime.datetime
+    nick_name: str = None
+    created: datetime.datetime = None
 
 
 class ContactCreate(BaseContact):
