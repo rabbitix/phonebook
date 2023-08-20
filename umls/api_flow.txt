@@ -2,7 +2,47 @@
 actor User
 
 User -> API:Get list of contacts
-API ->BACKEND:GET /contacts
-BACKEND-->API:Return the Response
+API -> BACKEND:GET /contacts
+BACKEND --> API:Return the Response contain all contacts
+
+User -> API:Get detail for a contact
+API -> BACKEND:GET /contacts/1/
+BACKEND -->API: Return Response for contact with id 1
+
+User -> API: create a new contact
+API -> BACKEND: POST /contacts/
+BACKEND --> API: Create a new contact and return new created contact
+
+User -> API: update a contact
+API -> BACKEND: PATCH /contacts/1/
+BACKEND --> API: Update contact with id 1 with partial data sent in body
+
+User -> API: delete a contact
+API -> BACKEND: DELETE /contacts/1/
+BACKEND --> API: Delete contact with id 1
+
+
+
+
+User -> API:Get list of numbers for a contact
+API -> BACKEND:GET /contacts/1/numbers/
+BACKEND --> API:Return the Response contains list of numbers for contact with id 1
+
+User -> API:Get detail of number with id 1 for contact with id 1
+API -> BACKEND:GET /contacts/1/numbers/1/
+BACKEND --> API: Return Response containing number detail with id 1 for contact with id 1
+
+User -> API: create a new number for contact with id 1
+API -> BACKEND: POST /contacts/1/numbers/
+BACKEND --> API: Create a new number for contact with id 1 and return contact with id 1
+
+User -> API: update number with id 1 for contact with id 1
+API -> BACKEND: PATCH /contacts/1/numbers/1/
+BACKEND --> API: Update number with id 1 for contact with id 1 with partial data sent in body
+
+User -> API: delete a number for contact with id 1
+API -> BACKEND: DELETE /contacts/1/numbers/1/
+BACKEND --> API: Delete number with id 1 for contact with id 1
+
 
 @enduml
