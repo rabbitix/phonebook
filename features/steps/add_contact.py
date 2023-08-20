@@ -1,6 +1,4 @@
 from behave import *
-from phonebook.main import app
-from fastapi.testclient import TestClient
 
 use_step_matcher("re")
 
@@ -15,27 +13,25 @@ def step_impl(context):
 
 @when("she provide first-name last-name and nick-name")
 def step_impl(context):
-    client = TestClient(app, base_url="http://127.0.0.1:8000")
     data = {
         "first_name": "ali",
         "last_name": "fazeli",
         "nick_name": "alex",
     }
 
-    response = client.post('/contacts/', json=data)
+    response = context.client.post('/contacts/', json=data)
     context.response = response
 
 
 @when("she do not provide first-name of the contact")
 def step_impl(context):
-    client = TestClient(app, base_url="http://127.0.0.1:8000")
     data = {
 
         "last_name": "fazeli",
         "nick_name": "alex",
     }
 
-    response = client.post('/contacts/', json=data)
+    response = context.client.post('/contacts/', json=data)
     context.response = response
 
 

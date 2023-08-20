@@ -19,7 +19,7 @@ class Number(NumberCreate):
     contact_id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class BaseContact(BaseModel):
@@ -44,4 +44,4 @@ class FullContact(BaseContact):
     numbers: list[NumberCreate] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
