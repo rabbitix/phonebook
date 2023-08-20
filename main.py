@@ -68,7 +68,7 @@ def contact_delete(contact_id: int, db: Session = Depends(get_db)):
 
 # region number
 
-@app.get('/contact/{contact_id}/numbers/', tags=["Numbers"], response_model=list[schemas.Number])
+@app.get('/contacts/{contact_id}/numbers/', tags=["Numbers"], response_model=list[schemas.Number])
 def list_number_for_contact(contact_id: int, db: Session = Depends(get_db)):
     db_contact = crud.get_contact(db, contact_id)
     if not db_contact:
@@ -76,7 +76,7 @@ def list_number_for_contact(contact_id: int, db: Session = Depends(get_db)):
     return crud.get_contact_numbers(db, contact_id)
 
 
-@app.post('/contact/{contact_id}/numbers/', tags=["Numbers"], response_model=schemas.FullContact)
+@app.post('/contacts/{contact_id}/numbers/', tags=["Numbers"], response_model=schemas.FullContact)
 def create_number_for_contact(contact_id: int, number: schemas.NumberCreate, db: Session = Depends(get_db)):
     db_contact = crud.get_contact(db, contact_id)
     if not db_contact:
@@ -85,7 +85,7 @@ def create_number_for_contact(contact_id: int, number: schemas.NumberCreate, db:
     return crud.get_contact(db, contact_id)
 
 
-@app.patch('/contact/{contact_id}/numbers/{number_id}/', tags=["Numbers"], response_model=schemas.FullContact)
+@app.patch('/contacts/{contact_id}/numbers/{number_id}/', tags=["Numbers"], response_model=schemas.FullContact)
 def create_number_for_contact(contact_id: int, number_id: int, number: schemas.NumberPartialUpdate,
                               db: Session = Depends(get_db)):
     db_contact = crud.get_contact(db, contact_id)
@@ -94,7 +94,7 @@ def create_number_for_contact(contact_id: int, number_id: int, number: schemas.N
     return crud.partial_update_number_for_contact(db, contact_id, number_id, number)
 
 
-@app.delete('/contact/{contact_id}/numbers/{number_id}/', tags=["Numbers"], )
+@app.delete('/contacts/{contact_id}/numbers/{number_id}/', tags=["Numbers"], )
 def create_number_for_contact(contact_id: int, number_id: int, db: Session = Depends(get_db)):
     db_contact = crud.get_contact(db, contact_id)
     if not db_contact:
