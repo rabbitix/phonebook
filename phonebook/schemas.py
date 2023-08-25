@@ -3,9 +3,9 @@ from pydantic import BaseModel, Field
 
 
 class NumberCreate(BaseModel):
-    label: str
-    phone: str  # todo:add phone structure
-    is_default: bool
+    label: str = "phone"
+    phone: str
+    is_default: bool = False
 
 
 class NumberPartialUpdate(BaseModel):
