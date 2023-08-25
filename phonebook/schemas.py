@@ -4,7 +4,7 @@ from pydantic import BaseModel, Field
 
 class NumberCreate(BaseModel):
     label: str = "phone"
-    phone: str
+    phone: str = Field(pattern=r"^09(1[0-9]|3[1-9]|2[1-9])?[0-9]{3}?[0-9]{4}$")
     is_default: bool = False
 
 

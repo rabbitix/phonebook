@@ -48,3 +48,22 @@ def step_impl(context):
     res = context.response.json()
     assert context.response.status_code == 200
     assert res['numbers'][-1]['label'] == 'phone'
+
+
+@when(
+    "she wants to add a number to contact with id {contact_id} and she provide a number like '{phone}' which is incomplete")
+def step_impl(context, contact_id, phone):
+    """
+    :type context: behave.runner.Context
+    """
+    data = {'phone': phone}
+    context.response = context.client.post(f'/contacts/{contact_id}/numbers/', json=data)
+
+
+@then("their number should not add and they get an error")
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    assert context.response.status_code == 422
+    assert context.response.json()['detail'][0]['type'] == "string_pattern_mismatch"

@@ -13,3 +13,7 @@ Feature: add a number to a contact
     When she wants to add number to contact with id 1 and only provide phone as '09123456789'
     Then their number will add with a default label
 
+  Scenario: add a number to contact with wrong format
+    Given some user wants to add a number to a contact
+    When she wants to add a number to contact with id 1 and she provide a number like '09365623' which is incomplete
+    Then their number should not add and they get an error
