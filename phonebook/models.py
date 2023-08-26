@@ -12,6 +12,9 @@ class Contact(Base):
     nick_name = Column(String, nullable=True)
     created = Column(DateTime, default=datetime.datetime.now)
 
+    def to_dict(self):
+        return {col.name: getattr(self, col.name) for col in self.__table__.columns}
+
 
 class Number(Base):
     __tablename__ = 'numbers'
@@ -22,3 +25,6 @@ class Number(Base):
     contact_id = Column(Integer, ForeignKey('contacts.id'))
     # set lazy='dynamic' to be abel to query on relationship
     contact = relationship("Contact", backref=backref('numbers', lazy='dynamic'))
+
+    def to_dict(self):
+        return {col.name: getattr(self, col.name) for col in self.__table__.columns}
