@@ -27,6 +27,8 @@ class Contact(phonebook_pb2_grpc.ContactServiceServicer):
     def GetContact(self, request, context):
         contact = crud.get_contact(self.db, request.contact_id)
         data = contact.to_dict()
+        data['numbers'] = [phonebook_pb2.NumberResponse(label=n.label, phone=n.phone, is_default=n.is_default) for n in
+                           contact.numbers.all()]
         return phonebook_pb2.ContactResponse(message="here you are :)", **data)
 
     def AddContact(self, request, context):
@@ -42,8 +44,17 @@ class Contact(phonebook_pb2_grpc.ContactServiceServicer):
 
 
 class Number(phonebook_pb2_grpc.NumberServiceServicer):
+    def __init__(self):
+        self.db = database.SessionLocal()
+
     def AddNumber(self, request, context):
-        return phonebook_pb2.NumberResponse()
+        py_number = schemas.NumberCreate(label=request.label,
+                                         is_default=request.is_default,
+                                         phone=request.phone,
+                                         )
+        number = crud.create_number_for_contact(self.db, py_number, request.contact_id)
+        data = number.to_dict()
+        return phonebook_pb2.NumberResponse(message='your number added!', **data)
 
 
 def serve():

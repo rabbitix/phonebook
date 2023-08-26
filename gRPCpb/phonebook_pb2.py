@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fphonebook.proto\"U\n\rNumberRequest\x12\x12\n\ncontact_id\x18\x01 \x01(\x05\x12\r\n\x05label\x18\x02 \x01(\t\x12\r\n\x05phone\x18\x03 \x01(\t\x12\x12\n\nis_default\x18\x04 \x01(\x08\"B\n\x0eNumberResponse\x12\r\n\x05label\x18\x01 \x01(\t\x12\r\n\x05phone\x18\x02 \x01(\t\x12\x12\n\nis_default\x18\x03 \x01(\x08\"J\n\x0e\x43ontactRequest\x12\x12\n\nfirst_name\x18\x01 \x01(\t\x12\x11\n\tlast_name\x18\x02 \x01(\t\x12\x11\n\tnick_name\x18\x03 \x01(\t\"\x9b\x01\n\x0f\x43ontactResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\x11\n\tnick_name\x18\x04 \x01(\t\x12 \n\x07numbers\x18\x05 \x03(\x0b\x32\x0f.NumberResponse\x12\n\n\x02id\x18\x06 \x01(\x05\x12\x0f\n\x07\x63reated\x18\x07 \x01(\t\",\n\x16ReteriveContactRequest\x12\x12\n\ncontact_id\x18\x01 \x01(\x05\x32~\n\x0e\x43ontactService\x12\x39\n\nGetContact\x12\x17.ReteriveContactRequest\x1a\x10.ContactResponse\"\x00\x12\x31\n\nAddContact\x12\x0f.ContactRequest\x1a\x10.ContactResponse\"\x00\x32?\n\rNumberService\x12.\n\tAddNumber\x12\x0e.NumberRequest\x1a\x0f.NumberResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fphonebook.proto\"U\n\rNumberRequest\x12\x12\n\ncontact_id\x18\x01 \x01(\x05\x12\r\n\x05label\x18\x02 \x01(\t\x12\r\n\x05phone\x18\x03 \x01(\t\x12\x12\n\nis_default\x18\x04 \x01(\x08\"S\n\x0eNumberResponse\x12\r\n\x05label\x18\x01 \x01(\t\x12\r\n\x05phone\x18\x02 \x01(\t\x12\x12\n\nis_default\x18\x03 \x01(\x08\x12\x0f\n\x07message\x18\x04 \x01(\t\"J\n\x0e\x43ontactRequest\x12\x12\n\nfirst_name\x18\x01 \x01(\t\x12\x11\n\tlast_name\x18\x02 \x01(\t\x12\x11\n\tnick_name\x18\x03 \x01(\t\"\x9b\x01\n\x0f\x43ontactResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\x11\n\tnick_name\x18\x04 \x01(\t\x12 \n\x07numbers\x18\x05 \x03(\x0b\x32\x0f.NumberResponse\x12\n\n\x02id\x18\x06 \x01(\x05\x12\x0f\n\x07\x63reated\x18\x07 \x01(\t\",\n\x16ReteriveContactRequest\x12\x12\n\ncontact_id\x18\x01 \x01(\x05\x32~\n\x0e\x43ontactService\x12\x39\n\nGetContact\x12\x17.ReteriveContactRequest\x1a\x10.ContactResponse\"\x00\x12\x31\n\nAddContact\x12\x0f.ContactRequest\x1a\x10.ContactResponse\"\x00\x32?\n\rNumberService\x12.\n\tAddNumber\x12\x0e.NumberRequest\x1a\x0f.NumberResponse\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -24,15 +24,15 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_NUMBERREQUEST']._serialized_start=19
   _globals['_NUMBERREQUEST']._serialized_end=104
   _globals['_NUMBERRESPONSE']._serialized_start=106
-  _globals['_NUMBERRESPONSE']._serialized_end=172
-  _globals['_CONTACTREQUEST']._serialized_start=174
-  _globals['_CONTACTREQUEST']._serialized_end=248
-  _globals['_CONTACTRESPONSE']._serialized_start=251
-  _globals['_CONTACTRESPONSE']._serialized_end=406
-  _globals['_RETERIVECONTACTREQUEST']._serialized_start=408
-  _globals['_RETERIVECONTACTREQUEST']._serialized_end=452
-  _globals['_CONTACTSERVICE']._serialized_start=454
-  _globals['_CONTACTSERVICE']._serialized_end=580
-  _globals['_NUMBERSERVICE']._serialized_start=582
-  _globals['_NUMBERSERVICE']._serialized_end=645
+  _globals['_NUMBERRESPONSE']._serialized_end=189
+  _globals['_CONTACTREQUEST']._serialized_start=191
+  _globals['_CONTACTREQUEST']._serialized_end=265
+  _globals['_CONTACTRESPONSE']._serialized_start=268
+  _globals['_CONTACTRESPONSE']._serialized_end=423
+  _globals['_RETERIVECONTACTREQUEST']._serialized_start=425
+  _globals['_RETERIVECONTACTREQUEST']._serialized_end=469
+  _globals['_CONTACTSERVICE']._serialized_start=471
+  _globals['_CONTACTSERVICE']._serialized_end=597
+  _globals['_NUMBERSERVICE']._serialized_start=599
+  _globals['_NUMBERSERVICE']._serialized_end=662
 # @@protoc_insertion_point(module_scope)

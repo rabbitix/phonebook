@@ -27,4 +27,5 @@ class Number(Base):
     contact = relationship("Contact", backref=backref('numbers', lazy='dynamic'))
 
     def to_dict(self):
-        return {col.name: getattr(self, col.name) for col in self.__table__.columns}
+        ignore = ['id', 'contact_id']
+        return {col.name: getattr(self, col.name) for col in self.__table__.columns if col.name not in ignore}

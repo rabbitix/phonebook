@@ -18,14 +18,16 @@ class NumberRequest(_message.Message):
     def __init__(self, contact_id: _Optional[int] = ..., label: _Optional[str] = ..., phone: _Optional[str] = ..., is_default: bool = ...) -> None: ...
 
 class NumberResponse(_message.Message):
-    __slots__ = ["label", "phone", "is_default"]
+    __slots__ = ["label", "phone", "is_default", "message"]
     LABEL_FIELD_NUMBER: _ClassVar[int]
     PHONE_FIELD_NUMBER: _ClassVar[int]
     IS_DEFAULT_FIELD_NUMBER: _ClassVar[int]
+    MESSAGE_FIELD_NUMBER: _ClassVar[int]
     label: str
     phone: str
     is_default: bool
-    def __init__(self, label: _Optional[str] = ..., phone: _Optional[str] = ..., is_default: bool = ...) -> None: ...
+    message: str
+    def __init__(self, label: _Optional[str] = ..., phone: _Optional[str] = ..., is_default: bool = ..., message: _Optional[str] = ...) -> None: ...
 
 class ContactRequest(_message.Message):
     __slots__ = ["first_name", "last_name", "nick_name"]
