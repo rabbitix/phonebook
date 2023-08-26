@@ -13,7 +13,8 @@ class Contact(Base):
     created = Column(DateTime, default=datetime.datetime.now)
 
     def to_dict(self):
-        return {col.name: getattr(self, col.name) for col in self.__table__.columns}
+        ignore = ['id', 'created']
+        return {col.name: getattr(self, col.name) for col in self.__table__.columns if col.name not in ignore}
 
 
 class Number(Base):

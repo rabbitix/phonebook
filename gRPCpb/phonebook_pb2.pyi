@@ -40,22 +40,30 @@ class ContactRequest(_message.Message):
     def __init__(self, first_name: _Optional[str] = ..., last_name: _Optional[str] = ..., nick_name: _Optional[str] = ...) -> None: ...
 
 class ContactResponse(_message.Message):
-    __slots__ = ["message", "first_name", "last_name", "nick_name", "numbers", "id", "created"]
+    __slots__ = ["message", "first_name", "last_name", "nick_name", "numbers"]
     MESSAGE_FIELD_NUMBER: _ClassVar[int]
     FIRST_NAME_FIELD_NUMBER: _ClassVar[int]
     LAST_NAME_FIELD_NUMBER: _ClassVar[int]
     NICK_NAME_FIELD_NUMBER: _ClassVar[int]
     NUMBERS_FIELD_NUMBER: _ClassVar[int]
-    ID_FIELD_NUMBER: _ClassVar[int]
-    CREATED_FIELD_NUMBER: _ClassVar[int]
     message: str
     first_name: str
     last_name: str
     nick_name: str
     numbers: _containers.RepeatedCompositeFieldContainer[NumberResponse]
-    id: int
-    created: str
-    def __init__(self, message: _Optional[str] = ..., first_name: _Optional[str] = ..., last_name: _Optional[str] = ..., nick_name: _Optional[str] = ..., numbers: _Optional[_Iterable[_Union[NumberResponse, _Mapping]]] = ..., id: _Optional[int] = ..., created: _Optional[str] = ...) -> None: ...
+    def __init__(self, message: _Optional[str] = ..., first_name: _Optional[str] = ..., last_name: _Optional[str] = ..., nick_name: _Optional[str] = ..., numbers: _Optional[_Iterable[_Union[NumberResponse, _Mapping]]] = ...) -> None: ...
+
+class EditContactRequest(_message.Message):
+    __slots__ = ["contact_id", "first_name", "last_name", "nick_name"]
+    CONTACT_ID_FIELD_NUMBER: _ClassVar[int]
+    FIRST_NAME_FIELD_NUMBER: _ClassVar[int]
+    LAST_NAME_FIELD_NUMBER: _ClassVar[int]
+    NICK_NAME_FIELD_NUMBER: _ClassVar[int]
+    contact_id: int
+    first_name: str
+    last_name: str
+    nick_name: str
+    def __init__(self, contact_id: _Optional[int] = ..., first_name: _Optional[str] = ..., last_name: _Optional[str] = ..., nick_name: _Optional[str] = ...) -> None: ...
 
 class ReteriveContactRequest(_message.Message):
     __slots__ = ["contact_id"]

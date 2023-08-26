@@ -26,8 +26,14 @@ message ContactResponse {
   string last_name = 3;
   string nick_name = 4;
   repeated NumberResponse numbers = 5;
-  int32 id = 6;
-  string created = 7;
+}
+
+message EditContactRequest{
+  int32 contact_id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string nick_name = 4;
+
 }
 
 message ReteriveContactRequest{
@@ -37,6 +43,8 @@ message ReteriveContactRequest{
 service ContactService {
   rpc GetContact(ReteriveContactRequest) returns (ContactResponse){};
   rpc AddContact(ContactRequest) returns (ContactResponse){};
+  rpc EditContact(EditContactRequest) returns (ContactResponse){};
+
 }
 
 service NumberService{

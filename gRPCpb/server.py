@@ -32,15 +32,27 @@ class Contact(phonebook_pb2_grpc.ContactServiceServicer):
         return phonebook_pb2.ContactResponse(message="here you are :)", **data)
 
     def AddContact(self, request, context):
+        py_contact = self.request_to_py_contact(request)
+        contact = crud.create_contact(self.db, py_contact)
+
+        data = contact.to_dict()
+
+        return phonebook_pb2.ContactResponse(message="seems like contact added! hooray!", **data)
+
+    def EditContact(self, request, context):
+        py_contact = self.request_to_py_contact(request)
+        old_contact = crud.get_contact(self.db, request.contact_id)
+
+        contact = crud.update_contact(self.db, py_contact, old_contact)
+
+        return phonebook_pb2.ContactResponse(message="did it! updated~!", **contact.to_dict())
+
+    def request_to_py_contact(self, request):
         py_contact = schemas.ContactCreate(first_name=request.first_name,
                                            last_name=request.last_name,
                                            nick_name=request.nick_name
                                            )
-        contact = crud.create_contact(self.db, py_contact)
-
-        data = contact.to_dict()
-        data['created'] = data['created'].strftime("%x")
-        return phonebook_pb2.ContactResponse(message="seems like contact added! hooray!", **data)
+        return py_contact
 
 
 class Number(phonebook_pb2_grpc.NumberServiceServicer):

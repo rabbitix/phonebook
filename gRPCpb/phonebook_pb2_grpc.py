@@ -24,6 +24,11 @@ class ContactServiceStub(object):
                 request_serializer=phonebook__pb2.ContactRequest.SerializeToString,
                 response_deserializer=phonebook__pb2.ContactResponse.FromString,
                 )
+        self.EditContact = channel.unary_unary(
+                '/ContactService/EditContact',
+                request_serializer=phonebook__pb2.EditContactRequest.SerializeToString,
+                response_deserializer=phonebook__pb2.ContactResponse.FromString,
+                )
 
 
 class ContactServiceServicer(object):
@@ -41,6 +46,12 @@ class ContactServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def EditContact(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ContactServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -52,6 +63,11 @@ def add_ContactServiceServicer_to_server(servicer, server):
             'AddContact': grpc.unary_unary_rpc_method_handler(
                     servicer.AddContact,
                     request_deserializer=phonebook__pb2.ContactRequest.FromString,
+                    response_serializer=phonebook__pb2.ContactResponse.SerializeToString,
+            ),
+            'EditContact': grpc.unary_unary_rpc_method_handler(
+                    servicer.EditContact,
+                    request_deserializer=phonebook__pb2.EditContactRequest.FromString,
                     response_serializer=phonebook__pb2.ContactResponse.SerializeToString,
             ),
     }
@@ -94,6 +110,23 @@ class ContactService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/ContactService/AddContact',
             phonebook__pb2.ContactRequest.SerializeToString,
+            phonebook__pb2.ContactResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def EditContact(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/ContactService/EditContact',
+            phonebook__pb2.EditContactRequest.SerializeToString,
             phonebook__pb2.ContactResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
