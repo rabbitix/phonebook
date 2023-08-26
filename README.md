@@ -38,3 +38,21 @@ after building our image is done, you can run a container using our brand-new im
 then you can see the running container in http://127.0.0.0.1:8080/docs
 
 that's it! :D 
+
+
+### keycloak implementation
+i've decided to use keycloak as user base since it handles all stuff related to users 
+and auth and authorization.
+
+here are some github stuff i found:
+
+- [keycloak with fastapi](https://github.com/code-specialist/fastapi-keycloak)
+- [keycloak example](https://fastapi-keycloak.code-specialist.com/full_example/)
+- [keycloak example](https://github.com/nurgasemetey/fastapi-keycloak-oidc)
+
+
+##### how to start it?
+you need to use [keycloak docker](https://www.keycloak.org/getting-started/getting-started-docker)
+
+
+
