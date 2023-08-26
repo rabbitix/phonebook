@@ -47,6 +47,10 @@ class Contact(phonebook_pb2_grpc.ContactServiceServicer):
 
         return phonebook_pb2.ContactResponse(message="did it! updated~!", **contact.to_dict())
 
+    def DeleteContact(self, request, context):
+        contact = crud.get_contact(self.db, request.contact_id)
+        crud.delete_contact(self.db, contact)
+        return phonebook_pb2.ContactDeleteResponse(message=f"your contact with id {request.contact_id} deleted!")
     def request_to_py_contact(self, request):
         py_contact = schemas.ContactCreate(first_name=request.first_name,
                                            last_name=request.last_name,

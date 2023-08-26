@@ -70,3 +70,9 @@ class ReteriveContactRequest(_message.Message):
     CONTACT_ID_FIELD_NUMBER: _ClassVar[int]
     contact_id: int
     def __init__(self, contact_id: _Optional[int] = ...) -> None: ...
+
+class ContactDeleteResponse(_message.Message):
+    __slots__ = ["message"]
+    MESSAGE_FIELD_NUMBER: _ClassVar[int]
+    message: str
+    def __init__(self, message: _Optional[str] = ...) -> None: ...

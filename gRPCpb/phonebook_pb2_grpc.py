@@ -29,6 +29,11 @@ class ContactServiceStub(object):
                 request_serializer=phonebook__pb2.EditContactRequest.SerializeToString,
                 response_deserializer=phonebook__pb2.ContactResponse.FromString,
                 )
+        self.DeleteContact = channel.unary_unary(
+                '/ContactService/DeleteContact',
+                request_serializer=phonebook__pb2.ReteriveContactRequest.SerializeToString,
+                response_deserializer=phonebook__pb2.ContactDeleteResponse.FromString,
+                )
 
 
 class ContactServiceServicer(object):
@@ -52,6 +57,12 @@ class ContactServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def DeleteContact(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ContactServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -69,6 +80,11 @@ def add_ContactServiceServicer_to_server(servicer, server):
                     servicer.EditContact,
                     request_deserializer=phonebook__pb2.EditContactRequest.FromString,
                     response_serializer=phonebook__pb2.ContactResponse.SerializeToString,
+            ),
+            'DeleteContact': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteContact,
+                    request_deserializer=phonebook__pb2.ReteriveContactRequest.FromString,
+                    response_serializer=phonebook__pb2.ContactDeleteResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -128,6 +144,23 @@ class ContactService(object):
         return grpc.experimental.unary_unary(request, target, '/ContactService/EditContact',
             phonebook__pb2.EditContactRequest.SerializeToString,
             phonebook__pb2.ContactResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteContact(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/ContactService/DeleteContact',
+            phonebook__pb2.ReteriveContactRequest.SerializeToString,
+            phonebook__pb2.ContactDeleteResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
