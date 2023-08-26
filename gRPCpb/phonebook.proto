@@ -1,6 +1,9 @@
 syntax = 'proto3';
 
-
+message GetNumberRequest{
+  int32 contact_id = 1;
+  int32 number_id = 2;
+}
 message NumberRequest{
   int32 contact_id = 1;
   string label = 2;
@@ -12,6 +15,27 @@ message NumberResponse{
   string phone = 2;
   bool is_default = 3;
   string message = 4;
+}
+message FullNumberResponse{
+  string label = 1;
+  string phone = 2;
+  bool is_default = 3;
+  ContactRequest contact = 4;
+}
+message EditNumberRequest{
+  optional string label = 1;
+  optional string phone = 2;
+  optional bool is_default = 3;
+  int32 contact_id = 4;
+  int32 number_id = 5;
+
+}
+message DeleteNumberRequest{
+  int32 contact_id = 1;
+  int32 number_id = 2;
+}
+message NumberDeleteResponse{
+  string message = 1;
 }
 
 message ContactRequest{
@@ -47,9 +71,11 @@ service ContactService {
   rpc AddContact(ContactRequest) returns (ContactResponse){};
   rpc EditContact(EditContactRequest) returns (ContactResponse){};
   rpc DeleteContact(ReteriveContactRequest) returns (ContactDeleteResponse);
-
 }
 
 service NumberService{
-  rpc AddNumber(NumberRequest) returns (NumberResponse){};
+  rpc AddNumber(NumberRequest) returns (FullNumberResponse){};
+  rpc GetNumber(GetNumberRequest) returns (FullNumberResponse){};
+  rpc EditNumber(EditNumberRequest) returns (FullNumberResponse){};
+  rpc DeleteNumber(DeleteNumberRequest)returns(NumberDeleteResponse){};
 }

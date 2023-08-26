@@ -51,6 +51,7 @@ class Contact(phonebook_pb2_grpc.ContactServiceServicer):
         contact = crud.get_contact(self.db, request.contact_id)
         crud.delete_contact(self.db, contact)
         return phonebook_pb2.ContactDeleteResponse(message=f"your contact with id {request.contact_id} deleted!")
+
     def request_to_py_contact(self, request):
         py_contact = schemas.ContactCreate(first_name=request.first_name,
                                            last_name=request.last_name,
@@ -68,9 +69,35 @@ class Number(phonebook_pb2_grpc.NumberServiceServicer):
                                          is_default=request.is_default,
                                          phone=request.phone,
                                          )
+        contact = self.get_contact(request.contact_id)
         number = crud.create_number_for_contact(self.db, py_number, request.contact_id)
         data = number.to_dict()
-        return phonebook_pb2.NumberResponse(message='your number added!', **data)
+        data['contact'] = phonebook_pb2.ContactRequest(**contact.to_dict())
+        return phonebook_pb2.FullNumberResponse(**data)
+
+    def GetNumber(self, request, context):
+        contact = self.get_contact(request.contact_id)
+        number = crud.get_number_for_contact(self.db, request.contact_id, request.number_id)
+        data = number.to_dict()
+        data['contact'] = phonebook_pb2.ContactRequest(**contact.to_dict())
+        return phonebook_pb2.FullNumberResponse(**data)
+
+    def EditNumber(self, request, context):
+        py_number = schemas.NumberCreate(label=request.label,
+                                         is_default=request.is_default,
+                                         phone=request.phone,
+                                         )
+        contact = crud.partial_update_number_for_contact(self.db, request.contact_id, request.number_id, py_number)
+        data = py_number.model_dump()
+        data['contact'] = phonebook_pb2.ContactRequest(**contact.to_dict())
+        return phonebook_pb2.FullNumberResponse(**data)
+
+    def DeleteNumber(self, request, context):
+        crud.delete_number(self.db, request.contact_id, request.number_id)
+        return phonebook_pb2.NumberDeleteResponse(message="your number deleted!")
+
+    def get_contact(self, contact_id) -> models.Contact:
+        return crud.get_contact(self.db, contact_id)
 
 
 def serve():

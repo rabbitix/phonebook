@@ -5,6 +5,14 @@ from typing import ClassVar as _ClassVar, Iterable as _Iterable, Mapping as _Map
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
+class GetNumberRequest(_message.Message):
+    __slots__ = ["contact_id", "number_id"]
+    CONTACT_ID_FIELD_NUMBER: _ClassVar[int]
+    NUMBER_ID_FIELD_NUMBER: _ClassVar[int]
+    contact_id: int
+    number_id: int
+    def __init__(self, contact_id: _Optional[int] = ..., number_id: _Optional[int] = ...) -> None: ...
+
 class NumberRequest(_message.Message):
     __slots__ = ["contact_id", "label", "phone", "is_default"]
     CONTACT_ID_FIELD_NUMBER: _ClassVar[int]
@@ -28,6 +36,46 @@ class NumberResponse(_message.Message):
     is_default: bool
     message: str
     def __init__(self, label: _Optional[str] = ..., phone: _Optional[str] = ..., is_default: bool = ..., message: _Optional[str] = ...) -> None: ...
+
+class FullNumberResponse(_message.Message):
+    __slots__ = ["label", "phone", "is_default", "contact"]
+    LABEL_FIELD_NUMBER: _ClassVar[int]
+    PHONE_FIELD_NUMBER: _ClassVar[int]
+    IS_DEFAULT_FIELD_NUMBER: _ClassVar[int]
+    CONTACT_FIELD_NUMBER: _ClassVar[int]
+    label: str
+    phone: str
+    is_default: bool
+    contact: ContactRequest
+    def __init__(self, label: _Optional[str] = ..., phone: _Optional[str] = ..., is_default: bool = ..., contact: _Optional[_Union[ContactRequest, _Mapping]] = ...) -> None: ...
+
+class EditNumberRequest(_message.Message):
+    __slots__ = ["label", "phone", "is_default", "contact_id", "number_id"]
+    LABEL_FIELD_NUMBER: _ClassVar[int]
+    PHONE_FIELD_NUMBER: _ClassVar[int]
+    IS_DEFAULT_FIELD_NUMBER: _ClassVar[int]
+    CONTACT_ID_FIELD_NUMBER: _ClassVar[int]
+    NUMBER_ID_FIELD_NUMBER: _ClassVar[int]
+    label: str
+    phone: str
+    is_default: bool
+    contact_id: int
+    number_id: int
+    def __init__(self, label: _Optional[str] = ..., phone: _Optional[str] = ..., is_default: bool = ..., contact_id: _Optional[int] = ..., number_id: _Optional[int] = ...) -> None: ...
+
+class DeleteNumberRequest(_message.Message):
+    __slots__ = ["contact_id", "number_id"]
+    CONTACT_ID_FIELD_NUMBER: _ClassVar[int]
+    NUMBER_ID_FIELD_NUMBER: _ClassVar[int]
+    contact_id: int
+    number_id: int
+    def __init__(self, contact_id: _Optional[int] = ..., number_id: _Optional[int] = ...) -> None: ...
+
+class NumberDeleteResponse(_message.Message):
+    __slots__ = ["message"]
+    MESSAGE_FIELD_NUMBER: _ClassVar[int]
+    message: str
+    def __init__(self, message: _Optional[str] = ...) -> None: ...
 
 class ContactRequest(_message.Message):
     __slots__ = ["first_name", "last_name", "nick_name"]

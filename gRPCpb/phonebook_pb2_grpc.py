@@ -177,7 +177,22 @@ class NumberServiceStub(object):
         self.AddNumber = channel.unary_unary(
                 '/NumberService/AddNumber',
                 request_serializer=phonebook__pb2.NumberRequest.SerializeToString,
-                response_deserializer=phonebook__pb2.NumberResponse.FromString,
+                response_deserializer=phonebook__pb2.FullNumberResponse.FromString,
+                )
+        self.GetNumber = channel.unary_unary(
+                '/NumberService/GetNumber',
+                request_serializer=phonebook__pb2.GetNumberRequest.SerializeToString,
+                response_deserializer=phonebook__pb2.FullNumberResponse.FromString,
+                )
+        self.EditNumber = channel.unary_unary(
+                '/NumberService/EditNumber',
+                request_serializer=phonebook__pb2.EditNumberRequest.SerializeToString,
+                response_deserializer=phonebook__pb2.FullNumberResponse.FromString,
+                )
+        self.DeleteNumber = channel.unary_unary(
+                '/NumberService/DeleteNumber',
+                request_serializer=phonebook__pb2.DeleteNumberRequest.SerializeToString,
+                response_deserializer=phonebook__pb2.NumberDeleteResponse.FromString,
                 )
 
 
@@ -190,13 +205,46 @@ class NumberServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetNumber(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def EditNumber(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteNumber(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_NumberServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'AddNumber': grpc.unary_unary_rpc_method_handler(
                     servicer.AddNumber,
                     request_deserializer=phonebook__pb2.NumberRequest.FromString,
-                    response_serializer=phonebook__pb2.NumberResponse.SerializeToString,
+                    response_serializer=phonebook__pb2.FullNumberResponse.SerializeToString,
+            ),
+            'GetNumber': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetNumber,
+                    request_deserializer=phonebook__pb2.GetNumberRequest.FromString,
+                    response_serializer=phonebook__pb2.FullNumberResponse.SerializeToString,
+            ),
+            'EditNumber': grpc.unary_unary_rpc_method_handler(
+                    servicer.EditNumber,
+                    request_deserializer=phonebook__pb2.EditNumberRequest.FromString,
+                    response_serializer=phonebook__pb2.FullNumberResponse.SerializeToString,
+            ),
+            'DeleteNumber': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteNumber,
+                    request_deserializer=phonebook__pb2.DeleteNumberRequest.FromString,
+                    response_serializer=phonebook__pb2.NumberDeleteResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -221,6 +269,57 @@ class NumberService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/NumberService/AddNumber',
             phonebook__pb2.NumberRequest.SerializeToString,
-            phonebook__pb2.NumberResponse.FromString,
+            phonebook__pb2.FullNumberResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetNumber(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/NumberService/GetNumber',
+            phonebook__pb2.GetNumberRequest.SerializeToString,
+            phonebook__pb2.FullNumberResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def EditNumber(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/NumberService/EditNumber',
+            phonebook__pb2.EditNumberRequest.SerializeToString,
+            phonebook__pb2.FullNumberResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteNumber(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/NumberService/DeleteNumber',
+            phonebook__pb2.DeleteNumberRequest.SerializeToString,
+            phonebook__pb2.NumberDeleteResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

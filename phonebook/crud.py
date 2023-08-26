@@ -75,3 +75,9 @@ def delete_number(db: Session, contact_id: int, number_id: int):
     number_obj = contact_obj.numbers.filter(models.Number.id == number_id).first()
     db.delete(number_obj)
     db.commit()
+
+
+def get_number_for_contact(db: Session, contact_id: int, number_id: int):
+    contact_obj: models.Contact = get_contact(db, contact_id)
+    number_obj = contact_obj.numbers.filter(models.Number.id == number_id).first()
+    return number_obj

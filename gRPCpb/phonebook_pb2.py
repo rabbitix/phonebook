@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fphonebook.proto\"U\n\rNumberRequest\x12\x12\n\ncontact_id\x18\x01 \x01(\x05\x12\r\n\x05label\x18\x02 \x01(\t\x12\r\n\x05phone\x18\x03 \x01(\t\x12\x12\n\nis_default\x18\x04 \x01(\x08\"S\n\x0eNumberResponse\x12\r\n\x05label\x18\x01 \x01(\t\x12\r\n\x05phone\x18\x02 \x01(\t\x12\x12\n\nis_default\x18\x03 \x01(\x08\x12\x0f\n\x07message\x18\x04 \x01(\t\"J\n\x0e\x43ontactRequest\x12\x12\n\nfirst_name\x18\x01 \x01(\t\x12\x11\n\tlast_name\x18\x02 \x01(\t\x12\x11\n\tnick_name\x18\x03 \x01(\t\"~\n\x0f\x43ontactResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\x11\n\tnick_name\x18\x04 \x01(\t\x12 \n\x07numbers\x18\x05 \x03(\x0b\x32\x0f.NumberResponse\"b\n\x12\x45\x64itContactRequest\x12\x12\n\ncontact_id\x18\x01 \x01(\x05\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\x11\n\tnick_name\x18\x04 \x01(\t\",\n\x16ReteriveContactRequest\x12\x12\n\ncontact_id\x18\x01 \x01(\x05\"(\n\x15\x43ontactDeleteResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2\xf8\x01\n\x0e\x43ontactService\x12\x39\n\nGetContact\x12\x17.ReteriveContactRequest\x1a\x10.ContactResponse\"\x00\x12\x31\n\nAddContact\x12\x0f.ContactRequest\x1a\x10.ContactResponse\"\x00\x12\x36\n\x0b\x45\x64itContact\x12\x13.EditContactRequest\x1a\x10.ContactResponse\"\x00\x12@\n\rDeleteContact\x12\x17.ReteriveContactRequest\x1a\x16.ContactDeleteResponse2?\n\rNumberService\x12.\n\tAddNumber\x12\x0e.NumberRequest\x1a\x0f.NumberResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fphonebook.proto\"9\n\x10GetNumberRequest\x12\x12\n\ncontact_id\x18\x01 \x01(\x05\x12\x11\n\tnumber_id\x18\x02 \x01(\x05\"U\n\rNumberRequest\x12\x12\n\ncontact_id\x18\x01 \x01(\x05\x12\r\n\x05label\x18\x02 \x01(\t\x12\r\n\x05phone\x18\x03 \x01(\t\x12\x12\n\nis_default\x18\x04 \x01(\x08\"S\n\x0eNumberResponse\x12\r\n\x05label\x18\x01 \x01(\t\x12\r\n\x05phone\x18\x02 \x01(\t\x12\x12\n\nis_default\x18\x03 \x01(\x08\x12\x0f\n\x07message\x18\x04 \x01(\t\"h\n\x12\x46ullNumberResponse\x12\r\n\x05label\x18\x01 \x01(\t\x12\r\n\x05phone\x18\x02 \x01(\t\x12\x12\n\nis_default\x18\x03 \x01(\x08\x12 \n\x07\x63ontact\x18\x04 \x01(\x0b\x32\x0f.ContactRequest\"\x9e\x01\n\x11\x45\x64itNumberRequest\x12\x12\n\x05label\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x12\n\x05phone\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x17\n\nis_default\x18\x03 \x01(\x08H\x02\x88\x01\x01\x12\x12\n\ncontact_id\x18\x04 \x01(\x05\x12\x11\n\tnumber_id\x18\x05 \x01(\x05\x42\x08\n\x06_labelB\x08\n\x06_phoneB\r\n\x0b_is_default\"<\n\x13\x44\x65leteNumberRequest\x12\x12\n\ncontact_id\x18\x01 \x01(\x05\x12\x11\n\tnumber_id\x18\x02 \x01(\x05\"\'\n\x14NumberDeleteResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"J\n\x0e\x43ontactRequest\x12\x12\n\nfirst_name\x18\x01 \x01(\t\x12\x11\n\tlast_name\x18\x02 \x01(\t\x12\x11\n\tnick_name\x18\x03 \x01(\t\"~\n\x0f\x43ontactResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\x11\n\tnick_name\x18\x04 \x01(\t\x12 \n\x07numbers\x18\x05 \x03(\x0b\x32\x0f.NumberResponse\"b\n\x12\x45\x64itContactRequest\x12\x12\n\ncontact_id\x18\x01 \x01(\x05\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\x11\n\tnick_name\x18\x04 \x01(\t\",\n\x16ReteriveContactRequest\x12\x12\n\ncontact_id\x18\x01 \x01(\x05\"(\n\x15\x43ontactDeleteResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2\xf8\x01\n\x0e\x43ontactService\x12\x39\n\nGetContact\x12\x17.ReteriveContactRequest\x1a\x10.ContactResponse\"\x00\x12\x31\n\nAddContact\x12\x0f.ContactRequest\x1a\x10.ContactResponse\"\x00\x12\x36\n\x0b\x45\x64itContact\x12\x13.EditContactRequest\x1a\x10.ContactResponse\"\x00\x12@\n\rDeleteContact\x12\x17.ReteriveContactRequest\x1a\x16.ContactDeleteResponse2\xf2\x01\n\rNumberService\x12\x32\n\tAddNumber\x12\x0e.NumberRequest\x1a\x13.FullNumberResponse\"\x00\x12\x35\n\tGetNumber\x12\x11.GetNumberRequest\x1a\x13.FullNumberResponse\"\x00\x12\x37\n\nEditNumber\x12\x12.EditNumberRequest\x1a\x13.FullNumberResponse\"\x00\x12=\n\x0c\x44\x65leteNumber\x12\x14.DeleteNumberRequest\x1a\x15.NumberDeleteResponse\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -21,22 +21,32 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'phonebook_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _globals['_NUMBERREQUEST']._serialized_start=19
-  _globals['_NUMBERREQUEST']._serialized_end=104
-  _globals['_NUMBERRESPONSE']._serialized_start=106
-  _globals['_NUMBERRESPONSE']._serialized_end=189
-  _globals['_CONTACTREQUEST']._serialized_start=191
-  _globals['_CONTACTREQUEST']._serialized_end=265
-  _globals['_CONTACTRESPONSE']._serialized_start=267
-  _globals['_CONTACTRESPONSE']._serialized_end=393
-  _globals['_EDITCONTACTREQUEST']._serialized_start=395
-  _globals['_EDITCONTACTREQUEST']._serialized_end=493
-  _globals['_RETERIVECONTACTREQUEST']._serialized_start=495
-  _globals['_RETERIVECONTACTREQUEST']._serialized_end=539
-  _globals['_CONTACTDELETERESPONSE']._serialized_start=541
-  _globals['_CONTACTDELETERESPONSE']._serialized_end=581
-  _globals['_CONTACTSERVICE']._serialized_start=584
-  _globals['_CONTACTSERVICE']._serialized_end=832
-  _globals['_NUMBERSERVICE']._serialized_start=834
-  _globals['_NUMBERSERVICE']._serialized_end=897
+  _globals['_GETNUMBERREQUEST']._serialized_start=19
+  _globals['_GETNUMBERREQUEST']._serialized_end=76
+  _globals['_NUMBERREQUEST']._serialized_start=78
+  _globals['_NUMBERREQUEST']._serialized_end=163
+  _globals['_NUMBERRESPONSE']._serialized_start=165
+  _globals['_NUMBERRESPONSE']._serialized_end=248
+  _globals['_FULLNUMBERRESPONSE']._serialized_start=250
+  _globals['_FULLNUMBERRESPONSE']._serialized_end=354
+  _globals['_EDITNUMBERREQUEST']._serialized_start=357
+  _globals['_EDITNUMBERREQUEST']._serialized_end=515
+  _globals['_DELETENUMBERREQUEST']._serialized_start=517
+  _globals['_DELETENUMBERREQUEST']._serialized_end=577
+  _globals['_NUMBERDELETERESPONSE']._serialized_start=579
+  _globals['_NUMBERDELETERESPONSE']._serialized_end=618
+  _globals['_CONTACTREQUEST']._serialized_start=620
+  _globals['_CONTACTREQUEST']._serialized_end=694
+  _globals['_CONTACTRESPONSE']._serialized_start=696
+  _globals['_CONTACTRESPONSE']._serialized_end=822
+  _globals['_EDITCONTACTREQUEST']._serialized_start=824
+  _globals['_EDITCONTACTREQUEST']._serialized_end=922
+  _globals['_RETERIVECONTACTREQUEST']._serialized_start=924
+  _globals['_RETERIVECONTACTREQUEST']._serialized_end=968
+  _globals['_CONTACTDELETERESPONSE']._serialized_start=970
+  _globals['_CONTACTDELETERESPONSE']._serialized_end=1010
+  _globals['_CONTACTSERVICE']._serialized_start=1013
+  _globals['_CONTACTSERVICE']._serialized_end=1261
+  _globals['_NUMBERSERVICE']._serialized_start=1264
+  _globals['_NUMBERSERVICE']._serialized_end=1506
 # @@protoc_insertion_point(module_scope)
